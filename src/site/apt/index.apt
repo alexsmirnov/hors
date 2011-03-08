@@ -1,0 +1,14 @@
+
+ -----
+ The Site
+ -----
+ alexander smirnov
+ -----
+
+Maven Site for hors project
+
++-----+
+
+mvn site
+
++-----+
