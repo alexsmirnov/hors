@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:hors="http://hors.org/">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>#{this.title}</title>
+<link href="/css/example.css"/>
+<link hors:ignore href="/css/debug.css"/>
+</head>
+<body>
+<form hors:id="form">
+<h1 hors:id="title"></h1>
+   <div class="text">
+     <input hors:id="text" type="text"/>
+     <input hors:id="calendar" type="text"/>
+   </div>
+   <div class="buttons">
+     <input hors:id="submit" type="submit" value="Submit form"/>
+     <input id="cancel" hors:id="cancel" type="reset" value="Reset form"/>
+   </div>
+</form>
+<script type="text/javascript">
+   $hors(function(){
+	   document.getElementById("cancel").disable();
+   })
+</script>
+</body>
+</html>
