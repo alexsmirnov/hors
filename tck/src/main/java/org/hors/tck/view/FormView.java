@@ -1,5 +1,6 @@
 package org.hors.tck.view;
 
+import javax.enterprise.event.Observes;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import javax.validation.constraints.NotNull;
@@ -11,10 +12,11 @@ import org.hors.component.Command;
 import org.hors.component.Form;
 import org.hors.component.Input;
 import org.hors.component.Output;
+import org.hors.tck.model.Mybean;
 import org.hors.view.View;
 
 
-public class FormView {
+public class FormView implements View {
 
 	@Inject
 	private NextPage nextPage;
@@ -26,13 +28,13 @@ public class FormView {
 	private Form form;
 	
 	@Inject
-	@Bind("#{mybean.text")
+	@Bind(name=Mybean.FORM_TEXT)
 	@NotNull
 	private Input text;
 	
 	@Inject
 	@Service(CalendarService.class)
-	@Bind("#{mybean.date")
+	@Bind(el="#{mybean.date}")
 	private Calendar calendar;
 	
 	@Inject
@@ -53,6 +55,15 @@ public class FormView {
 	
 	public Object process(){
 		return nextPage;
+	}
+	
+	/**
+	 * Default action
+	 * @param action
+	 * @return
+	 */
+	public Object action(@Observes Action action){
+		return this;
 	}
 	// TODO - provide examples with CDI delegate, inheritance etc.
 }

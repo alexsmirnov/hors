@@ -12,6 +12,8 @@ public @interface Bind {
 	/**
 	 * @return EL expression for binding.
 	 */
-	String value() ;
+	String el() default "" ;
+
+	String name() default "";
 
 }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:hors="http://hors.org/">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!-- title should be inserted from delegated view. 
+	<title>#{this.delegate.title}</title>
+ -->
+<link href="/css/example.css"/>
+<link hors:ignore href="/css/debug.css"/>
+</head>
+<body>
+<!-- bind control to delegated object child -->
+<h1 hors:id="delegate.title"></h1>
+   <div class="header">
+     <ul hors:id="navigation"  class="nav">
+     </ul>
+   </div>
+   <div class="body">
+     <div hors:id="delegate" class="main"/>
+     <div class="sidebar">Template sidebar</div>
+   </div>
+   <div class="footer">
+     <ul hors:id="navigation"  class="footernav">
+     </ul>
+   </div>
+<script hors:id="googleAnalitics"/>
+</body>
+</html>
