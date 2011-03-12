@@ -13,13 +13,15 @@ import org.hors.component.Form;
 import org.hors.component.Input;
 import org.hors.component.Output;
 import org.hors.tck.model.Mybean;
+import org.hors.view.HorsView;
+import org.hors.view.Page;
 import org.hors.view.View;
 
-
-public class FormView implements View {
+@Page(id="/index.html",template="/org/hors/tck/view/FormView.html")
+public class FormView  {
 
 	@Inject
-	private NextPage nextPage;
+	private HorsView<NextPage> nextPage;
 	
 	@Inject
 	private Output title;
