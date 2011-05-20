@@ -1,10 +1,6 @@
 package org.hors.component;
 
-public interface Repeat<T> extends Component {
+public @interface Repeat {
 
-	/**
-	 * @return current row data.
-	 */
-	T getRow();
 
 }

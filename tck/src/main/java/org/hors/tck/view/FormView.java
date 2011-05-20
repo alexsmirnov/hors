@@ -21,39 +21,20 @@ import org.hors.view.View;
 public class FormView  {
 
 	@Inject
-	private HorsView<NextPage> nextPage;
+	private NextPage nextPage;
 	
-	@Inject
-	private Output title;
+	@Output
+	private String title;
 	
-	@Inject
-	private Form form;
 	
-	@Inject
-	@Bind(name=Mybean.FORM_TEXT)
 	@NotNull
-	private Input text;
+	@Input
+	private String text;
 	
 	@Inject
-	@Service(CalendarService.class)
-	@Bind(el="#{mybean.date}")
 	private Calendar calendar;
 	
-	@Inject
-	@Action("#{this.process}")
-	private Command submit;
 	
-	/**
-	 * This method takes command instance created by container, set its type to cancel and
-	 * return instance for injection.
-	 * @param command
-	 * @return
-	 */
-	@Produces
-	public Command getCancel(Command command){
-		command.setCancel(true);
-		return command;
-	}
 	
 	public Object process(){
 		return nextPage;
@@ -67,5 +48,47 @@ public class FormView  {
 	public Object action(@Observes Action action){
 		return this;
 	}
-	// TODO - provide examples with CDI delegate, inheritance etc.
+
+	/**
+	 * @return the title
+	 */
+	@Command
+	public String getTitle() {
+		return title;
+	}
+
+	/**
+	 * @param title the title to set
+	 */
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	/**
+	 * @return the text
+	 */
+	public String getText() {
+		return text;
+	}
+
+	/**
+	 * @param text the text to set
+	 */
+	public void setText(String text) {
+		this.text = text;
+	}
+
+	/**
+	 * @return the calendar
+	 */
+	public Calendar getCalendar() {
+		return calendar;
+	}
+
+	/**
+	 * @param calendar the calendar to set
+	 */
+	public void setCalendar(Calendar calendar) {
+		this.calendar = calendar;
+	}
 }

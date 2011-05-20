@@ -15,8 +15,7 @@ import org.hors.view.ViewResolver;
 
 /**
  * This resolver activated for all requests to the "/mobile/ folder.
- * It delegates all calls to the default resolver, injected by CDI,
- * with appropriate path transformations.
+ * It delegates all calls to the default resolver.
  * If request matches target path, it also activates {@link Mobile}
  * stereotype as default for CDI.
  * @author asmirnov
@@ -24,27 +23,19 @@ import org.hors.view.ViewResolver;
  */
 @Activate(Mobile.class)
 @RequestScoped
-@Path("/mobile/{id}")
-@RequestPath("/mobile/{id}")
-public class PathActivatedViewResolver implements ViewResolver {
+@RequestPath("/mobile/.*")
+public class PathActivatedViewResolver {
 	
 	private final ViewResolver defaultResolver;
-	private final Provider<String> pathId;
 
 	@Inject
-	public PathActivatedViewResolver(ViewResolver defaultResolver, @PathParam("id") Provider<String> pathId) {
+	public PathActivatedViewResolver(ViewResolver defaultResolver) {
 		this.defaultResolver = defaultResolver;
-		this.pathId = pathId;
 	}
 
-	@Override
-	public View find(String viewId) {
-		return defaultResolver.find(pathId.get());
+	public ViewResolver<?> index() {
+		return defaultResolver;
 	}
 
-	@Override
-	public String getRequestPath(View view) {
-		return "/mobile"+defaultResolver.getRequestPath(view);
-	}
 
 }

@@ -1,9 +1,8 @@
 package org.hors.component;
 
-import org.hors.component.AttributeProcessor;
 
-public interface HtmlComponent extends Component {
+public @interface HtmlComponent {
 
-	void setAttribute(String name, AttributeProcessor processor);
+	Attribute[] attributes() default {};
 
 }

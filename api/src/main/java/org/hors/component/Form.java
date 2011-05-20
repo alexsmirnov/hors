@@ -1,5 +1,5 @@
 package org.hors.component;
 
-public interface Form extends Component {
+public @interface Form {
 
 }

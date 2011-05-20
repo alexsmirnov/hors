@@ -1,7 +1,6 @@
 package org.hors.component;
 
-public interface Command extends Component {
+public @interface Command {
 
-	void setCancel(boolean b);
 
 }

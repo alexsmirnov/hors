@@ -8,6 +8,6 @@ package org.hors.component;
  * @author asmirnov
  *
  */
-public interface Component {
+public @interface Component {
 
 }
