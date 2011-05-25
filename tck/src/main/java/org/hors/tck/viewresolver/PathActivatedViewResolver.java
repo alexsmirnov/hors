@@ -1,16 +1,10 @@
 package org.hors.tck.viewresolver;
 
 import javax.enterprise.context.RequestScoped;
-import javax.enterprise.context.spi.CreationalContext;
-import javax.enterprise.inject.spi.Producer;
 import javax.inject.Inject;
-import javax.inject.Provider;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 
 import org.hors.view.Activate;
 import org.hors.view.RequestPath;
-import org.hors.view.View;
 import org.hors.view.ViewResolver;
 
 /**

@@ -18,17 +18,17 @@ import org.hors.view.View;
  *
  */
 @Decorator
-public class DecoratorView implements View {
+public class ViewDecorator {
 
-	private final View delegate;
+	private final Object delegate;
 
 	@Inject
-	public DecoratorView(@Delegate @Any View delegate) {
+	public ViewDecorator(@Delegate Object delegate) {
 		this.delegate = delegate;
 	}
 	
 	@Inject
-	private Component navigation;
+	private Navigation navigation;
 	
 	@Inject
 	private Component googleAnalitics;
