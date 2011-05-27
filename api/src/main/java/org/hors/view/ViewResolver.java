@@ -12,7 +12,7 @@ public interface ViewResolver <T> {
 	 * @param viewId logical viewId.
 	 * @return instance of hors View for given id.
 	 */
-	T find(String viewId);
+	T find(String path);
 	
 	/**
 	 * @param view target {@link View} 

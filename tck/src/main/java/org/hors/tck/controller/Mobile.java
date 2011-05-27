@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.hors.tck.viewresolver;
+package org.hors.tck.controller;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -11,14 +11,13 @@ import java.lang.annotation.Target;
 import javax.enterprise.inject.Stereotype;
 
 /**
- * This annotation defines stereotype for application state with
- * authenticated user.
+ * This annotation marks mobile version of web application.
  * @author asmirnov
  *
  */
 @Stereotype
 @Target(ElementType.TYPE) 
 @Retention(RetentionPolicy.RUNTIME)
-public @interface NotLoggedIn {
+public @interface Mobile {
 
 }

@@ -1,4 +1,4 @@
-package org.hors.tck.viewresolver;
+package org.hors.tck.controller;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;

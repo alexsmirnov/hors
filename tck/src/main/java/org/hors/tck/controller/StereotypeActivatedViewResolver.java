@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.hors.tck.viewresolver;
+package org.hors.tck.controller;
 
 import javax.inject.Inject;
 
