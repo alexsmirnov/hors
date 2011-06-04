@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.hors.tck.controller;
+package org.hors.tck.resolver;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

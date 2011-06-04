@@ -2,7 +2,7 @@ package org.hors.tck.template;
 
 import javax.inject.Inject;
 
-import org.hors.tck.controller.Mobile;
+import org.hors.tck.resolver.Mobile;
 import org.hors.template.Template;
 import org.hors.template.TemplateResolver;
 

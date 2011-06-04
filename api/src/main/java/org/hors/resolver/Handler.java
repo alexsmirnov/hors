@@ -1,4 +1,7 @@
-package org.hors.view;
+package org.hors.resolver;
+
+import org.hors.servlet.RequestContext;
+import org.hors.view.View;
 
 /**
  * Implementation of this interface converts viewId ( request path )
@@ -6,13 +9,13 @@ package org.hors.view;
  * @author asmirnov
  *
  */
-public interface ViewResolver <T> {
+public interface Handler <T> {
 	
 	/**
 	 * @param viewId logical viewId.
 	 * @return instance of hors View for given id.
 	 */
-	T find(String path);
+	T find(String path, RequestContext context);
 	
 	/**
 	 * @param view target {@link View} 

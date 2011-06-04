@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.hors.view;
+package org.hors.resolver;
 
 import javax.ws.rs.Path;
 
