@@ -1,6 +1,5 @@
 package org.hors.resolver;
 
-import org.hors.servlet.RequestContext;
 import org.hors.view.View;
 
 /**
@@ -9,18 +8,18 @@ import org.hors.view.View;
  * @author asmirnov
  *
  */
-public interface Handler <T> {
+public interface ResourceResolver <T> {
 	
 	/**
 	 * @param viewId logical viewId.
 	 * @return instance of hors View for given id.
 	 */
-	T find(String path, RequestContext context);
+	T resolve(String path);
 	
 	/**
 	 * @param view target {@link View} 
 	 * @return request path for that view.
 	 */
-	String getRequestPath(T view);
+	String getPath(T view);
 
 }

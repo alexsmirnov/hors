@@ -5,7 +5,7 @@ package org.hors.tck.resolver;
 
 import javax.inject.Inject;
 
-import org.hors.resolver.Handler;
+import org.hors.resolver.ResourceResolver;
 import org.hors.resolver.Redirect;
 import org.hors.resolver.RequestPath;
 import org.hors.tck.view.LoginPage;

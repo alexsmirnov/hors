@@ -4,7 +4,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.PathParam;
 
-import org.hors.resolver.Handler;
+import org.hors.resolver.ResourceResolver;
 import org.hors.resolver.RequestPath;
 import org.hors.servlet.RequestContext;
 import org.hors.view.Activate;
@@ -22,17 +22,17 @@ import org.hors.view.Activate;
 @RequestPath("/mobile/")
 public class StereotypeActivatorResolver {
 	
-	private final Handler<?> defaultResolver;
+	private final ResourceResolver<?> defaultResolver;
 
 	@Inject
-	public StereotypeActivatorResolver(Handler<?> defaultResolver) {
+	public StereotypeActivatorResolver(ResourceResolver<?> defaultResolver) {
 		this.defaultResolver = defaultResolver;
 	}
 
 	@Mobile
 	@RequestPath("{path}")
 	public Object mobile(@PathParam("path") String path, RequestContext context){
-		return defaultResolver.find(path, context);
+		return defaultResolver.resolve(path);
 	}
 
 }
