@@ -1,12 +1,11 @@
-package org.hors.tck.resolver;
+package org.hors.resolver;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import javax.inject.Inject;
 
 import org.hors.Application;
-import org.hors.resolver.ResourceResolver;
-import org.hors.tck.model.Bean;
 import org.jboss.arquillian.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;

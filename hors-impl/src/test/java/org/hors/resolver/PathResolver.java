@@ -1,7 +1,5 @@
-package org.hors.tck.resolver;
+package org.hors.resolver;
 
-import org.hors.resolver.RequestPath;
-import org.hors.tck.model.Bean;
 
 @RequestPath("/foo")
 public class PathResolver {

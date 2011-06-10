@@ -1,4 +1,4 @@
-package org.hors.tck.model;
+package org.hors.resolver;
 
 public class Bean {
 
