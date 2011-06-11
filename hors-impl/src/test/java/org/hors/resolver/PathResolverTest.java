@@ -18,11 +18,11 @@ import org.junit.runner.RunWith;
 public class PathResolverTest {
 
 	@Inject
-	ResourceResolver<?> resolver;
+	ResourceResolver resolver;
 	
 	@Deployment
 	public static JavaArchive deployment(){
-		return ShrinkWrap.create(JavaArchive.class).addPackages(true, Application.class.getPackage());
+		return ShrinkWrap.create(JavaArchive.class).addPackages(true, ResourceResolver.class.getPackage());
 	}
 	
 	@Test

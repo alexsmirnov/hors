@@ -1,6 +1,5 @@
 package org.hors.resolver;
 
-import org.hors.view.View;
 
 /**
  * Implementation of this interface converts viewId ( request path )
@@ -8,18 +7,18 @@ import org.hors.view.View;
  * @author asmirnov
  *
  */
-public interface ResourceResolver <T> {
+public interface ResourceResolver {
 	
 	/**
-	 * @param viewId logical viewId.
+	 * @param path logical viewId.
 	 * @return instance of hors View for given id.
 	 */
-	T resolve(String path);
+	Object resolve(String path);
 	
 	/**
-	 * @param view target {@link View} 
+	 * @param resource target object. 
 	 * @return request path for that view.
 	 */
-	String getPath(T view);
+	String getPath(Object resource);
 
 }
