@@ -4,6 +4,7 @@
 package org.hors.resolver;
 
 import java.io.Serializable;
+import java.util.regex.Pattern;
 
 /**
  * This object stores request mathing pattern ( path, method, parameters,headers... ).
@@ -14,10 +15,16 @@ import java.io.Serializable;
  */
 public class RequestPattern implements Serializable, Comparable<RequestPattern> {
 
+	private Pattern pathPattern;
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1039236324380548880L;
+	
+	public RequestMatcher matcher(String path){
+		return null;		
+	}
+		
 
 	@Override
 	public int compareTo(RequestPattern o) {

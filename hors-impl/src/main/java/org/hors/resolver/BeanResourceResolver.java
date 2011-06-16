@@ -4,6 +4,7 @@
 package org.hors.resolver;
 
 import java.util.Map;
+import java.util.NavigableMap;
 
 /**
  * @author asmirnov
@@ -11,7 +12,11 @@ import java.util.Map;
  */
 public class BeanResourceResolver implements ResourceResolver {
 
-	private Map<RequestPattern, ControllerBeanDescription> controllerBeans;
+	/**
+	 * Sorted map of controller descriptions. bean Patterns sorted from the most common to
+	 * the broader
+	 */
+	private NavigableMap<RequestPattern, ControllerBeanDescription> controllerBeans;
 	
 	/* (non-Javadoc)
 	 * @see org.hors.resolver.ResourceResolver#resolve(java.lang.String)
