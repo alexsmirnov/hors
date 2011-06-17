@@ -6,7 +6,7 @@ import javax.ws.rs.PathParam;
 
 import org.hors.resolver.ResourceResolver;
 import org.hors.resolver.RequestPath;
-import org.hors.servlet.RequestContext;
+import org.hors.servlet.WebRequest;
 import org.hors.view.Activate;
 
 /**
@@ -31,7 +31,7 @@ public class StereotypeActivatorResolver {
 
 	@Mobile
 	@RequestPath("{path}")
-	public Object mobile(@PathParam("path") String path, RequestContext context){
+	public Object mobile(@PathParam("path") String path, WebRequest context){
 		return defaultResolver.resolve(path);
 	}
 

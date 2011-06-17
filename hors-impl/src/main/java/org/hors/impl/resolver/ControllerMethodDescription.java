@@ -1,4 +1,4 @@
-package org.hors.resolver;
+package org.hors.impl.resolver;
 
 /**
  * @author asmirnov

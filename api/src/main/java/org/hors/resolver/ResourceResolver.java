@@ -1,5 +1,7 @@
 package org.hors.resolver;
 
+import org.hors.servlet.WebRequest;
+
 
 /**
  * Implementation of this interface converts viewId ( request path )
@@ -10,10 +12,10 @@ package org.hors.resolver;
 public interface ResourceResolver {
 	
 	/**
-	 * @param path logical viewId.
+	 * @param request the current request served by resolver.
 	 * @return instance of hors View for given id.
 	 */
-	Object resolve(String path);
+	Object resolve(WebRequest request);
 	
 	/**
 	 * @param resource target object. 

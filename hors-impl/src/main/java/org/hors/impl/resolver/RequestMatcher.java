@@ -1,4 +1,4 @@
-package org.hors.resolver;
+package org.hors.impl.resolver;
 
 /**
  * Result of the {@link RequestPattern#matcher(String)} operation.
@@ -9,7 +9,10 @@ public interface RequestMatcher {
 	
 	boolean matches();
 	
-	String getPathFragment();
+	/**
+	 * @return the rest of path that doesn't match pattern.
+	 */
+	String getTail();
 	
 	public String getParameter(String name);
 	

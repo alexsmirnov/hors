@@ -1,4 +1,4 @@
-package org.hors;
+package org.hors.impl;
 
 /**
  * Hello world!

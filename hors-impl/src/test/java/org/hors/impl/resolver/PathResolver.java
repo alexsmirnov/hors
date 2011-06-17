@@ -1,4 +1,6 @@
-package org.hors.resolver;
+package org.hors.impl.resolver;
+
+import org.hors.resolver.RequestPath;
 
 
 @RequestPath("/foo")

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.hors.resolver;
+package org.hors.impl.resolver;
 
 import java.util.Map;
 

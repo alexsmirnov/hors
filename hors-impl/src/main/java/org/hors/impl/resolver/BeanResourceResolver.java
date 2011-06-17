@@ -1,10 +1,13 @@
 /**
  * 
  */
-package org.hors.resolver;
+package org.hors.impl.resolver;
 
 import java.util.Map;
 import java.util.NavigableMap;
+
+import org.hors.resolver.ResourceResolver;
+import org.hors.servlet.WebRequest;
 
 /**
  * @author asmirnov
@@ -19,10 +22,10 @@ public class BeanResourceResolver implements ResourceResolver {
 	private NavigableMap<RequestPattern, ControllerBeanDescription> controllerBeans;
 	
 	/* (non-Javadoc)
-	 * @see org.hors.resolver.ResourceResolver#resolve(java.lang.String)
+	 * @see org.hors.impl.resolver.ResourceResolver#resolve(java.lang.String)
 	 */
 	@Override
-	public Object resolve(String path) {
+	public Object resolve(WebRequest request) {
 		// find bean that matches request.
 		// find bean method that matches rest of the path.
 		//   if no appropriate method found, try another bean ?
@@ -32,7 +35,7 @@ public class BeanResourceResolver implements ResourceResolver {
 	}
 
 	/* (non-Javadoc)
-	 * @see org.hors.resolver.ResourceResolver#getPath(java.lang.Object)
+	 * @see org.hors.impl.resolver.ResourceResolver#getPath(java.lang.Object)
 	 */
 	@Override
 	public String getPath(Object resource) {

@@ -1,2 +1,2 @@
-org.hors.resolver.cdi.ControllerBeanExtension
+org.hors.impl.resolver.cdi.ControllerBeanExtension
 
