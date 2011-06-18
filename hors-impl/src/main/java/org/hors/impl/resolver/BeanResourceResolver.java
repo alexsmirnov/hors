@@ -3,9 +3,6 @@
  */
 package org.hors.impl.resolver;
 
-import java.util.Map;
-import java.util.NavigableMap;
-
 import org.hors.resolver.ResourceResolver;
 import org.hors.servlet.WebRequest;
 
@@ -19,8 +16,14 @@ public class BeanResourceResolver implements ResourceResolver {
 	 * Sorted map of controller descriptions. bean Patterns sorted from the most common to
 	 * the broader
 	 */
-	private NavigableMap<RequestPattern, ControllerBeanDescription> controllerBeans;
+	private final Resources resources;
 	
+	private final ResourceDescriptionVisitor visitor;
+
+	public BeanResourceResolver(Resources resources,ResourceDescriptionVisitor visitor) {
+		this.resources = resources;
+		this.visitor = visitor;
+	}
 	/* (non-Javadoc)
 	 * @see org.hors.impl.resolver.ResourceResolver#resolve(java.lang.String)
 	 */
@@ -30,8 +33,9 @@ public class BeanResourceResolver implements ResourceResolver {
 		// find bean method that matches rest of the path.
 		//   if no appropriate method found, try another bean ?
 		// get controller bean instance and call controller method.
+		Object resource = resources.apply(visitor, new VisitParameters(request));
 		// if no bean that matches request found, throw exception ( or return default 404 object ? )
-		return null;
+		return resource;
 	}
 
 	/* (non-Javadoc)

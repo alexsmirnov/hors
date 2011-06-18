@@ -1,0 +1,93 @@
+<class-diagram version="1.0.2" icons="true" automaticImage="PNG" always-add-relationships="false" generalizations="true" 
+  realizations="true" associations="true" dependencies="true" nesting-relationships="true">  
+  <class id="1" corner="BOTTOM_RIGHT" language="java" name="org.hors.impl.resolver.Resources" project="hors-impl" 
+    file="/hors-impl/src/main/java/org/hors/impl/resolver/Resources.java" binary="false">    
+    <position x="41" y="350" width="331" height="113"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="2" corner="BOTTOM_RIGHT" language="java" name="org.hors.impl.resolver.ResourceDescription" 
+    project="hors-impl" file="/hors-impl/src/main/java/org/hors/impl/resolver/ResourceDescription.java" binary="false">    
+    <position x="41" y="37" width="661" height="97"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="3" corner="BOTTOM_RIGHT" language="java" name="org.hors.impl.resolver.ResourceBean" project="hors-impl" 
+    file="/hors-impl/src/main/java/org/hors/impl/resolver/ResourceBean.java" binary="false">    
+    <position x="644" y="588" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="4" corner="BOTTOM_RIGHT" language="java" name="org.hors.impl.resolver.BeanDescription" project="hors-impl" 
+    file="/hors-impl/src/main/java/org/hors/impl/resolver/BeanDescription.java" binary="false">    
+    <position x="412" y="350" width="150" height="113"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="5" corner="BOTTOM_RIGHT" language="java" name="org.hors.impl.resolver.ControllerBean" project="hors-impl" 
+    file="/hors-impl/src/main/java/org/hors/impl/resolver/ControllerBean.java" binary="false">    
+    <position x="211" y="592" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <interface id="6" corner="BOTTOM_RIGHT" language="java" name="org.hors.impl.resolver.PathParameters" 
+    project="hors-impl" file="/hors-impl/src/main/java/org/hors/impl/resolver/PathParameters.java" binary="false">    
+    <position x="1064" y="350" width="231" height="97"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <class id="7" corner="BOTTOM_RIGHT" language="java" name="org.hors.impl.resolver.VisitParameters" project="hors-impl" 
+    file="/hors-impl/src/main/java/org/hors/impl/resolver/VisitParameters.java" binary="false">    
+    <position x="1064" y="37" width="433" height="273"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <interface id="8" corner="BOTTOM_RIGHT" language="java" name="org.hors.impl.resolver.ResourceDescriptionVisitor" 
+    project="hors-impl" file="/hors-impl/src/main/java/org/hors/impl/resolver/ResourceDescriptionVisitor.java" 
+    binary="false">    
+    <position x="742" y="37" width="282" height="113"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="false"/>      
+      <operations public="true" package="false" protected="false" private="false"/>    
+    </display>  
+  </interface>  
+  <generalization>    
+    <end type="SOURCE" nodeId="4"/>    
+    <end type="TARGET" nodeId="2"/>  
+  </generalization>  
+  <generalization>    
+    <end type="SOURCE" nodeId="1"/>    
+    <end type="TARGET" nodeId="2"/>  
+  </generalization>  
+  <generalization>    
+    <end type="SOURCE" nodeId="5"/>    
+    <end type="TARGET" nodeId="4"/>  
+  </generalization>  
+  <realization>    
+    <end type="SOURCE" nodeId="7"/>    
+    <end type="TARGET" nodeId="6"/>  
+  </realization>  
+  <generalization>    
+    <end type="SOURCE" nodeId="3"/>    
+    <end type="TARGET" nodeId="4"/>  
+  </generalization>  
+  <classifier-display autosize="true" package="true" initial-value="false" signature="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="false"/>    
+    <operations public="true" package="true" protected="true" private="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

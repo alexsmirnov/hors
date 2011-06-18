@@ -6,6 +6,8 @@ package org.hors.impl.resolver;
 import java.io.Serializable;
 import java.util.regex.Pattern;
 
+import org.hors.servlet.WebRequest;
+
 /**
  * This object stores request mathing pattern ( path, method, parameters,headers... ).
  * Patterns can be ordered from more specific to generic, so concrete descriptions processed
@@ -21,7 +23,7 @@ public class RequestPattern implements Serializable, Comparable<RequestPattern> 
 	 */
 	private static final long serialVersionUID = 1039236324380548880L;
 	
-	public RequestMatcher matcher(String path){
+	public RequestMatcher matcher(String path,WebRequest request){
 		return null;		
 	}
 		

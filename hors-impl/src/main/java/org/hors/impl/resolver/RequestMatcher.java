@@ -5,7 +5,7 @@ package org.hors.impl.resolver;
  * @author asmirnov
  *
  */
-public interface RequestMatcher {
+public interface RequestMatcher extends PathParameters {
 	
 	boolean matches();
 	
@@ -13,9 +13,5 @@ public interface RequestMatcher {
 	 * @return the rest of path that doesn't match pattern.
 	 */
 	String getTail();
-	
-	public String getParameter(String name);
-	
-	public Iterable<String> getParameterNames();
 
 }
