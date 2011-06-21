@@ -14,7 +14,7 @@ public class Resources extends ResourceDescription {
 	
 	private Map<RequestPattern, ResourcesPackage> packages;
 
-	private Map<RequestPattern, ControllerMethod> beans;
+	private Map<RequestPattern, ResourceBean> beans;
 	
 	@Override
 	public Object apply(ResourceDescriptionVisitor visitor, VisitParameters parameters) {
