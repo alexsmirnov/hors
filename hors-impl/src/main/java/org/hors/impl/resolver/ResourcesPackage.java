@@ -2,7 +2,7 @@ package org.hors.impl.resolver;
 
 import java.util.Map;
 
-import org.hors.impl.pattern.RequestPattern;
+import org.hors.impl.resolver.pattern.RequestPattern;
 
 import com.google.common.collect.ImmutableSortedMap;
 

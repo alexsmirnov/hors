@@ -3,6 +3,8 @@
  */
 package org.hors.impl.resolver;
 
+import javax.inject.Inject;
+
 import org.hors.resolver.ResourceResolver;
 import org.hors.servlet.WebRequest;
 
@@ -20,6 +22,7 @@ public class BeanResourceResolver implements ResourceResolver {
 	
 	private final ResourceDescriptionVisitor visitor;
 
+	@Inject
 	public BeanResourceResolver(Resources resources,ResourceDescriptionVisitor visitor) {
 		this.resources = resources;
 		this.visitor = visitor;

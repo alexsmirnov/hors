@@ -6,8 +6,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-import org.hors.impl.pattern.RequestMatcher;
-import org.hors.impl.pattern.RequestPathPattern;
+import org.hors.impl.resolver.pattern.RequestMatcher;
+import org.hors.impl.resolver.pattern.RequestPathPattern;
 import org.hors.servlet.WebRequest;
 import org.junit.Before;
 import org.junit.Test;

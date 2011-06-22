@@ -7,7 +7,7 @@ import java.util.Map;
 
 import javax.enterprise.inject.spi.Bean;
 
-import org.hors.impl.pattern.RequestPattern;
+import org.hors.impl.resolver.pattern.RequestPattern;
 
 import com.google.common.collect.ImmutableSortedMap;
 

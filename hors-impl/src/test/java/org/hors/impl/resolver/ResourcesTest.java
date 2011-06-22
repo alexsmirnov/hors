@@ -6,9 +6,9 @@ import static org.mockito.Mockito.*;
 import java.util.Collections;
 import java.util.Map;
 
-import org.hors.impl.pattern.AnyPathPattern;
-import org.hors.impl.pattern.RequestPathPattern;
-import org.hors.impl.pattern.RequestPattern;
+import org.hors.impl.resolver.pattern.AnyPathPattern;
+import org.hors.impl.resolver.pattern.RequestPathPattern;
+import org.hors.impl.resolver.pattern.RequestPattern;
 import org.hors.servlet.WebRequest;
 import org.junit.Test;
 import org.junit.runner.RunWith;

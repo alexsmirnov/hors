@@ -2,8 +2,8 @@ package org.hors.impl.resolver.cdi;
 
 import javax.enterprise.inject.spi.Extension;
 
-import org.hors.impl.pattern.RequestPattern;
 import org.hors.impl.resolver.ControllerBean;
+import org.hors.impl.resolver.pattern.RequestPattern;
 import org.hors.resolver.Resolver;
 
 /**

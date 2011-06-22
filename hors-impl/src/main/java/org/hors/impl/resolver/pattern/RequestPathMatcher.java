@@ -1,4 +1,4 @@
-package org.hors.impl.pattern;
+package org.hors.impl.resolver.pattern;
 
 import java.util.Map;
 

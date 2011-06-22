@@ -26,7 +26,10 @@ public class PathResolverTest {
 	
 	@Deployment
 	public static JavaArchive deployment(){
-		return ShrinkWrap.create(JavaArchive.class).addPackages(true, ResourceResolver.class.getPackage());
+		return ShrinkWrap.create(JavaArchive.class)
+		   .addPackages(true, ResourceResolver.class.getPackage())
+		   .addPackages(true, BeanResourceResolver.class.getPackage())
+		   .addAsManifestResource("META-INF/beans.xml","beans.xml");
 	}
 	
 	@Test

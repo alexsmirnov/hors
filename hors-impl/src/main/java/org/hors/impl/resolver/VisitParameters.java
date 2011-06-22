@@ -2,7 +2,7 @@ package org.hors.impl.resolver;
 
 import javax.enterprise.inject.spi.Bean;
 
-import org.hors.impl.pattern.RequestMatcher;
+import org.hors.impl.resolver.pattern.RequestMatcher;
 import org.hors.servlet.WebRequest;
 
 import com.google.common.collect.ImmutableMap;
