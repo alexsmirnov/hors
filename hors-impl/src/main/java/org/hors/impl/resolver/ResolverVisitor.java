@@ -1,5 +1,6 @@
 package org.hors.impl.resolver;
 
+
 public class ResolverVisitor implements ResourceDescriptionVisitor {
 
 

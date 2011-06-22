@@ -1,4 +1,4 @@
-package org.hors.impl.resolver;
+package org.hors.impl.resolver.pattern;
 
 import static junit.framework.Assert.assertEquals;
 
@@ -6,6 +6,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+import org.hors.impl.pattern.RequestMatcher;
+import org.hors.impl.pattern.RequestPathPattern;
 import org.hors.servlet.WebRequest;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,6 +20,7 @@ import org.mockito.MockitoAnnotations;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableList.Builder;
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 
 
 @RunWith(Parameterized.class)
@@ -53,12 +56,19 @@ public class RequestPathPatternTest {
 		public String path;
 		public boolean match;
 		public String tail;
-		public Map<String, String> parameters;
+		public final Map<String, String> parameters = Maps.newHashMap();
+		public TestParameter pp(String name, String value) {
+			this.parameters.put(name, value);
+			return this;
+		}
 	}
 
 	@Parameters
 	public static List<Object[]> parameters(){
-		return of(p("foo","foo",true,""));
+		return of(p("foo","foo",true,""),
+				p("foo/","foo/bar",true,"bar"),
+				p("baz/foo","foo",false,""),
+				p("foo/(?<id>.+)/","foo/12/bar",true,"bar").pp("id","12"));
 	}
 	
 	public static List<Object[]> of(Object ...objects){
@@ -76,11 +86,6 @@ public class RequestPathPatternTest {
 		param.path = path;
 		param.match = match;
 		param.tail = tail;
-		param.parameters = Collections.emptyMap();
-		return param;
-	}
-	public static TestParameter pp(TestParameter param,String name, String value) {
-		param.parameters= ImmutableMap.of(name, value);
 		return param;
 	}
 

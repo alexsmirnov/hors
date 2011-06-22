@@ -3,6 +3,9 @@ package org.hors.impl.resolver;
 import java.util.Iterator;
 import java.util.Map;
 
+import org.hors.impl.pattern.RequestMatcher;
+import org.hors.impl.pattern.RequestPattern;
+
 public abstract class ResourceDescription {
 
 	public abstract Object apply(ResourceDescriptionVisitor visitor, VisitParameters parameters);

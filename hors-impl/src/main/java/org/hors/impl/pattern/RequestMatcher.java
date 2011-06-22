@@ -1,4 +1,6 @@
-package org.hors.impl.resolver;
+package org.hors.impl.pattern;
+
+import org.hors.impl.resolver.PathParameters;
 
 /**
  * Result of the {@link RequestPattern#matcher(String)} operation.
