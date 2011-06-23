@@ -7,9 +7,7 @@
 		<groupId>org.hors</groupId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>org.hors</groupId>
 	<artifactId>tck</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>Hors framework Technology Compatibility Kit</name>
@@ -29,7 +27,6 @@
 		<dependency>
 			<groupId>javax.enterprise</groupId>
 			<artifactId>cdi-api</artifactId>
-			<version>1.0-SP4</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -47,13 +44,11 @@
 		<dependency>
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
-			<version>1.0.0.GA</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>javax.persistence</groupId>
 			<artifactId>persistence-api</artifactId>
-			<version>1.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>

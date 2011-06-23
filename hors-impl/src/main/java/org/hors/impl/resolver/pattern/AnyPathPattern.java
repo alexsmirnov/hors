@@ -2,6 +2,7 @@ package org.hors.impl.resolver.pattern;
 
 import org.hors.servlet.WebRequest;
 
+@SuppressWarnings("serial")
 public class AnyPathPattern implements RequestPattern {
 
 	public static final AnyPathPattern INSTANCE = new AnyPathPattern();

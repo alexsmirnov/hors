@@ -5,11 +5,9 @@
     <groupId>org.hors</groupId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>org.hors</groupId>
   <artifactId>api</artifactId>
   <name>Hors Framework API</name>
-  <version>0.0.1-SNAPSHOT</version>
-    <dependencies>
+  <dependencies>
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>

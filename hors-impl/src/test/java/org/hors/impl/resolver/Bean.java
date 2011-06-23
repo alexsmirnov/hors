@@ -1,7 +1,12 @@
 package org.hors.impl.resolver;
 
+import org.hors.resolver.RequestPath;
+
+@RequestPath(Bean.FOO_BAR)
 public class Bean {
 
+	static final String FOO_BAR = "/foo/bar";
+	
 	private String name;
 
 	public Bean() {

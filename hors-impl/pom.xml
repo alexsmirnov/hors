@@ -7,9 +7,7 @@
     <groupId>org.hors</groupId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>org.hors</groupId>
   <artifactId>hors-impl</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
   <name>hors-impl</name>
   <url>http://maven.apache.org</url>
   <dependencies>
@@ -22,7 +20,6 @@
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
-			<version>r09</version>
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
@@ -34,7 +31,6 @@
 		<dependency>
 			<groupId>javax.enterprise</groupId>
 			<artifactId>cdi-api</artifactId>
-			<version>1.0-SP4</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -52,13 +48,11 @@
 		<dependency>
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
-			<version>1.0.0.GA</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>javax.persistence</groupId>
 			<artifactId>persistence-api</artifactId>
-			<version>1.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
