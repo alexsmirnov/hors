@@ -10,10 +10,5 @@ public class ResolverVisitor implements ResourceDescriptionVisitor {
 		return null;
 	}
 
-	@Override
-	public Object visit(ControllerMethod method, VisitParameters parameters) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

@@ -1,7 +1,5 @@
 package org.hors.impl.resolver;
 
-import javax.enterprise.inject.spi.Bean;
-
 import org.hors.impl.resolver.pattern.RequestMatcher;
 import org.hors.servlet.WebRequest;
 
@@ -18,8 +16,6 @@ public final class VisitParameters implements PathParameters {
 	private final String path;
 	private final WebRequest request;
 	private final ImmutableMap<String, String> pathParams;
-	private final Bean<?> bean;
-
 	public VisitParameters(WebRequest request) {		
 		this(request.getPath(),request);
 	}
@@ -28,25 +24,20 @@ public final class VisitParameters implements PathParameters {
 		this.path = path;
 		this.request = request;
 		this.pathParams = ImmutableMap.of();
-		this.bean = null;
 	}
 
 	private VisitParameters(String tail, WebRequest request,
-			ImmutableMap<String, String> build,Bean<?> bean) {
+			ImmutableMap<String, String> pathParams) {
 				this.path = tail;
 				this.request = request;
-				this.pathParams = build;
-				this.bean = bean;
+				this.pathParams = pathParams;
 	}
 
 	public VisitParameters nextLevelParameters(RequestMatcher matcher) {
 		ImmutableMap<String, String> paramsMap = mergePathParameters(matcher);
-		return new VisitParameters(matcher.getTail(), request,paramsMap,bean);
+		return new VisitParameters(matcher.getTail(), request,paramsMap);
 	}
 
-	public VisitParameters forBean(Bean<?> bean) {
-		return new VisitParameters(path, request,pathParams,bean);
-	}
 
 	protected final ImmutableMap<String, String> mergePathParameters(PathParameters params) {
 		Builder<String,String> builder = ImmutableMap.builder();

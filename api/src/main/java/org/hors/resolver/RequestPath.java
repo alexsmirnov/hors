@@ -3,6 +3,10 @@
  */
 package org.hors.resolver;
 
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
+import javax.inject.Qualifier;
 import javax.ws.rs.Path;
 
 /**
@@ -11,6 +15,8 @@ import javax.ws.rs.Path;
  * @author asmirnov
  *
  */
+@Qualifier
+@Retention(RetentionPolicy.RUNTIME)
 public @interface RequestPath {
 	String value();
 }

@@ -38,7 +38,7 @@ public class ResourcesTest {
 	javax.enterprise.inject.spi.Bean<?> bean;
 
 	@Test
-	public void testMathodResource(){
+	public void testMethodResource(){
 		Resources resources = createResources();
 		VisitParameters params = new VisitParameters("foo/baz/method",request);
 		Object apply = resources.apply(visitor, params);
@@ -62,18 +62,18 @@ public class ResourcesTest {
 	}
 
 	private Resources createResources() {
-		Map<RequestPattern, BeanDescription> beans = Maps.newTreeMap();
+		Map<RequestPattern, ResourceDescription> beans = Maps.newTreeMap();
 		ResourceBean resourceBean = new ResourceBean(bean);
 		beans.put(new RequestPathPattern("bar"), resourceBean);
-		when(visitor.visit(eq(resourceBean), Matchers.<VisitParameters>any())).thenReturn(BEAN);
-		Map<RequestPattern, ControllerMethod> methods = Maps.newTreeMap();
-		ControllerMethod controllerMethod = new ControllerMethod();
+		when(visitor.visit(same(resourceBean), Matchers.<VisitParameters>any())).thenReturn(BEAN);
+		Map<RequestPattern, ResourceDescription> methods = Maps.newTreeMap();
+		ResourceBean controllerMethod = new ResourceBean(bean);
 		methods.put(new RequestPathPattern("method"), controllerMethod);
-		when(visitor.visit(eq(controllerMethod), Matchers.<VisitParameters>any())).thenReturn(METHOD);
-		beans.put(new RequestPathPattern("baz/"), new ControllerBean(bean,methods));
-		Map<RequestPattern, ResourcesPackage> packages = Maps.newTreeMap();
-		packages.put(AnyPathPattern.INSTANCE, new ResourcesPackage(Collections.<RequestPattern, BeanDescription>emptyMap()));
-		packages.put(new RequestPathPattern("foo/"), new ResourcesPackage(beans));
+		when(visitor.visit(same(controllerMethod), Matchers.<VisitParameters>any())).thenReturn(METHOD);
+		beans.put(new RequestPathPattern("baz/"), new Resources(methods));
+		Map<RequestPattern, ResourceDescription> packages = Maps.newTreeMap();
+		packages.put(AnyPathPattern.INSTANCE, new Resources(Collections.<RequestPattern, ResourceDescription>emptyMap()));
+		packages.put(new RequestPathPattern("foo/"), new Resources(beans));
 		Resources resources = new Resources(packages);
 		return resources;
 	}
