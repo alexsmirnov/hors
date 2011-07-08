@@ -40,7 +40,7 @@ public class ResourcesTest {
 	@Test
 	public void testMethodResource(){
 		Resources resources = createResources();
-		VisitParameters params = new VisitParameters("foo/baz/method",request);
+		VisitContext params = new VisitContext("foo/baz/method",request);
 		Object apply = resources.apply(visitor, params);
 		assertEquals(METHOD, apply);
 	}
@@ -48,7 +48,7 @@ public class ResourcesTest {
 	@Test
 	public void testBeanResource(){
 		Resources resources = createResources();
-		VisitParameters params = new VisitParameters("foo/bar",request);
+		VisitContext params = new VisitContext("foo/bar",request);
 		Object apply = resources.apply(visitor, params);
 		assertEquals(BEAN, apply);
 	}
@@ -56,7 +56,7 @@ public class ResourcesTest {
 	@Test
 	public void testMissedResource(){
 		Resources resources = createResources();
-		VisitParameters params = new VisitParameters("bar/baz",request);
+		VisitContext params = new VisitContext("bar/baz",request);
 		Object apply = resources.apply(visitor, params);
 		assertNull( apply);
 	}
@@ -65,11 +65,11 @@ public class ResourcesTest {
 		Map<RequestPattern, ResourceDescription> beans = Maps.newTreeMap();
 		ResourceBean resourceBean = new ResourceBean(bean);
 		beans.put(new RequestPathPattern("bar"), resourceBean);
-		when(visitor.visit(same(resourceBean), Matchers.<VisitParameters>any())).thenReturn(BEAN);
+		when(visitor.visit(same(resourceBean), Matchers.<VisitContext>any())).thenReturn(BEAN);
 		Map<RequestPattern, ResourceDescription> methods = Maps.newTreeMap();
 		ResourceBean controllerMethod = new ResourceBean(bean);
 		methods.put(new RequestPathPattern("method"), controllerMethod);
-		when(visitor.visit(same(controllerMethod), Matchers.<VisitParameters>any())).thenReturn(METHOD);
+		when(visitor.visit(same(controllerMethod), Matchers.<VisitContext>any())).thenReturn(METHOD);
 		beans.put(new RequestPathPattern("baz/"), new Resources(methods));
 		Map<RequestPattern, ResourceDescription> packages = Maps.newTreeMap();
 		packages.put(AnyPathPattern.INSTANCE, new Resources(Collections.<RequestPattern, ResourceDescription>emptyMap()));

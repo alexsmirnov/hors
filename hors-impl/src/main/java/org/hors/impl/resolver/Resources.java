@@ -12,10 +12,11 @@ import org.hors.impl.resolver.pattern.RequestPattern;
 import com.google.common.collect.ImmutableSortedMap;
 
 /**
+ * This class describes collection of resources with patterns
  * @author asmirnov
  *
  */
-public class Resources extends ResourceDescription {
+public class Resources implements ResourceDescription {
 	
 	private final ImmutableSortedMap<RequestPattern, ResourceDescription> resources;
 	
@@ -24,18 +25,27 @@ public class Resources extends ResourceDescription {
 	}
 	
 	@Override
-	public Object apply(ResourceDescriptionVisitor visitor, VisitParameters parameters) {
-		Object result = applyToMap(resources, visitor,parameters);
+	public Object apply(ResourceDescriptionVisitor visitor, VisitContext visitContext) {
+		Object result = applyToMap(resources, visitor,visitContext);
 		return result;
 	}
-	protected Object applyToMap(Map<RequestPattern,? extends ResourceDescription> map,ResourceDescriptionVisitor visitor, VisitParameters parameters){
+	
+	/**
+	 * Apply resource visitor to resources map. This method calls all resources in the Map where keys match
+	 * current request, and return first not null value. 
+	 * @param map pattern -&gt; resource Map
+	 * @param visitor to apply
+	 * @param visitContext current visit parameters.
+	 * @return resource object for matching request, or null if none matched. 
+	 */
+	protected Object applyToMap(Map<RequestPattern,? extends ResourceDescription> map,ResourceDescriptionVisitor visitor, VisitContext visitContext){
 		Iterator<RequestPattern> iterator = map.keySet().iterator();
 		Object result = null;
 		while(iterator.hasNext() && null == result) {
 			RequestPattern pattern = iterator.next();
-			RequestMatcher matcher = pattern.matcher(parameters.getPath(), parameters.getRequest());
+			RequestMatcher matcher = pattern.matcher(visitContext.getPath(), visitContext.getRequest());
 			if(matcher.matches()){				
-				result = map.get(pattern).apply(visitor, parameters.nextLevelParameters(matcher));
+				result = map.get(pattern).apply(visitor, visitContext.nextLevelParameters(matcher));
 			}
 		}
 		return result;

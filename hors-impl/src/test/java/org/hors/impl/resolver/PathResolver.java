@@ -9,11 +9,11 @@ import org.hors.resolver.RequestPath;
 public class PathResolver {
 	
 	@Produces
-	private Bean baz = new Bean("/baz");
+	private TestBean baz = new TestBean("/baz");
 
 	@Produces
 	@RequestPath("/bar")
-	public Bean bar(){
-		return new Bean("/baz/bar");
+	public TestBean bar(){
+		return new TestBean("/baz/bar");
 	}
 }

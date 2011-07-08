@@ -11,31 +11,31 @@ import com.google.common.collect.ImmutableMap.Builder;
  * @author asmirnov
  *
  */
-public final class VisitParameters implements PathParameters {
+public final class VisitContext implements PathParameters {
 
 	private final String path;
 	private final WebRequest request;
 	private final ImmutableMap<String, String> pathParams;
-	public VisitParameters(WebRequest request) {		
+	public VisitContext(WebRequest request) {		
 		this(request.getPath(),request);
 	}
 
-	public VisitParameters(String path,WebRequest request) {
+	public VisitContext(String path,WebRequest request) {
 		this.path = path;
 		this.request = request;
 		this.pathParams = ImmutableMap.of();
 	}
 
-	private VisitParameters(String tail, WebRequest request,
+	private VisitContext(String tail, WebRequest request,
 			ImmutableMap<String, String> pathParams) {
 				this.path = tail;
 				this.request = request;
 				this.pathParams = pathParams;
 	}
 
-	public VisitParameters nextLevelParameters(RequestMatcher matcher) {
+	public VisitContext nextLevelParameters(RequestMatcher matcher) {
 		ImmutableMap<String, String> paramsMap = mergePathParameters(matcher);
-		return new VisitParameters(matcher.getTail(), request,paramsMap);
+		return new VisitContext(matcher.getTail(), request,paramsMap);
 	}
 
 

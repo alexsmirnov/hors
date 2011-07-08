@@ -1,14 +1,19 @@
 package org.hors.impl.resolver;
 
-import java.util.Iterator;
-import java.util.Map;
 
-import org.hors.impl.resolver.pattern.RequestMatcher;
-import org.hors.impl.resolver.pattern.RequestPattern;
+/**
+ * Implementation of this interface creates resource object for given request.
+ * @author asmirnov
+ *
+ */
+public interface ResourceDescription {
 
-public abstract class ResourceDescription {
-
-	public abstract Object apply(ResourceDescriptionVisitor visitor, VisitParameters parameters);
-	
+	/**
+	 * Apply visitor for resource object.
+	 * @param visitor
+	 * @param parameters
+	 * @return
+	 */
+	Object apply(ResourceDescriptionVisitor visitor, VisitContext parameters);	
 
 }

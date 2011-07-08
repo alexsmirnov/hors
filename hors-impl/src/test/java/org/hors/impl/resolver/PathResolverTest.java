@@ -1,9 +1,16 @@
 package org.hors.impl.resolver;
 
+import static junit.framework.Assert.assertNotNull;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
 
+import java.util.Set;
+
+import javax.enterprise.inject.Instance;
+import javax.enterprise.inject.Produces;
+import javax.enterprise.inject.spi.Bean;
+import javax.enterprise.inject.spi.BeanManager;
 import javax.enterprise.inject.spi.Extension;
 import javax.inject.Inject;
 
@@ -22,25 +29,15 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
+import com.google.common.collect.Iterables;
+
 
 @RunWith(Arquillian.class)
 public class PathResolverTest {
 
+	
 	@Inject
-	ResourceResolver resolver;
-	
-	@Mock
-	WebRequest request;
-	
-	@Before
-	public void initMocks(){
-		MockitoAnnotations.initMocks(this);
-	}
-	
-	@After
-	public void verifyMocks(){
-		Mockito.validateMockitoUsage();
-	}
+	BeanResourceResolver resolver;
 	
 	@Deployment
 	public static JavaArchive deployment(){
@@ -52,10 +49,14 @@ public class PathResolverTest {
 		   ;
 	}
 	
+	
 	@Test
 	public void testResolvePath() throws Exception {
-		when(request.getPath()).thenReturn(Bean.FOO_BAR);
+		WebRequest request = Mockito.mock(WebRequest.class);
+		when(request.getPath()).thenReturn(TestBean.FOO_BAR);
 		Object resolved = resolver.resolve(request);
-		assertTrue(resolved instanceof Bean);
+		assertNotNull(resolved);
+		assertTrue(resolved instanceof TestBean);
+		Mockito.validateMockitoUsage();
 	}
 }
