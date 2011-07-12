@@ -10,6 +10,7 @@ import org.hors.impl.resolver.pattern.RequestMatcher;
 import org.hors.impl.resolver.pattern.RequestPattern;
 
 import com.google.common.collect.ImmutableSortedMap;
+import com.google.common.collect.Maps;
 
 /**
  * This class describes collection of resources with patterns
@@ -49,5 +50,26 @@ public class Resources implements ResourceDescription {
 			}
 		}
 		return result;
+	}
+
+	public static Builder builder(){
+		return new Builder();
+	}
+	
+	public static final class Builder {
+		
+		private Map<RequestPattern, ResourceDescription> map = Maps.newLinkedHashMap();
+		private Builder() {
+			// use static builder() method instead
+		}
+		
+		public Builder put(RequestPattern pattern,ResourceDescription description){
+			map.put(pattern, description);
+			return this;
+		}
+		
+		public Resources build(){
+			return new Resources(map);
+		}
 	}
 }
