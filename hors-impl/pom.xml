@@ -9,7 +9,27 @@
   </parent>
   <artifactId>hors-impl</artifactId>
   <name>hors-impl</name>
-  <url>http://maven.apache.org</url>
+  <url>http://hors.org/hors-impl</url>
+  <properties>
+    <scala.version>2.9.0-1</scala.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  	<repositories>
+		<repository>
+			<id>scala-tools.org</id>
+			<name>Scala-Tools Maven2 Repository</name>
+			<url>http://scala-tools.org/repo-releases</url>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>scala-tools.org</id>
+			<name>Scala-Tools Maven2 Repository</name>
+			<url>http://scala-tools.org/repo-releases</url>
+		</pluginRepository>
+	</pluginRepositories>
+  
   <dependencies>
 		<!-- hors -->
 		<dependency>
@@ -72,6 +92,33 @@
 			<artifactId>mockito-all</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- Scala -->
+		<dependency>
+			<groupId>org.scala-lang</groupId>
+			<artifactId>scala-library</artifactId>
+			<version>${scala.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.specs2</groupId>
+			<artifactId>specs2_2.9.0-1</artifactId>
+			<version>1.4</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.specs2</groupId>
+			<artifactId>specs2-scalaz-core_2.9.0-1</artifactId>
+			<version>6.0.RC2</version>
+		</dependency>
+
+		<!-- with Scala 2.8.1, change to: <artifactId>specs2-scalaz-core_2.8.1</artifactId> 
+			<version>5.1-SNAPSHOT</version> -->
+		<dependency>
+			<groupId>org.specs2</groupId>
+			<artifactId>specs2-scalaz-core_2.9.0-1</artifactId>
+			<version>6.0.RC2</version>
+			<scope>test</scope>
+		</dependency>
 
 		<!-- Arquillian -->
 		<dependency>
@@ -114,7 +161,30 @@
 			<scope>test</scope>
 		</dependency>
   </dependencies>
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+  	<build>
+		<plugins>
+		    <!-- Compile Scala test classes -->
+			<plugin>
+				<groupId>org.scala-tools</groupId>
+				<artifactId>maven-scala-plugin</artifactId>
+				<executions>
+					<execution>
+					    <id>scala-test-compile</id>
+					    <phase>process-test-resources</phase>
+						<goals>												     
+						    <goal>add-source</goal>
+							<goal>testCompile</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<scalaVersion>${scala.version}</scalaVersion>
+					<args>
+						<arg>-target:jvm-1.5</arg>
+					</args>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+  
 </project>

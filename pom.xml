@@ -13,6 +13,7 @@
 	<name>Hors web framework</name>
 	<description>Prototype for next generation JEE web framework</description>
 	<modules>
+		<module>api</module>
 		<module>hors-impl</module>
 	</modules>
 
