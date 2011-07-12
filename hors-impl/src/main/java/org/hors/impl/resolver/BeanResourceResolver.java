@@ -35,14 +35,7 @@ public class BeanResourceResolver implements ResourceResolver {
 		// find bean method that matches rest of the path.
 		//   if no appropriate method found, try another bean ?
 		// get controller bean instance and call controller method.
-		ResourceDescriptionVisitor visitor= new ResourceDescriptionVisitor() {
-			
-			@Override
-			public Object visit(ResourceProducer resourceBean, VisitContext parameters) {
-				return resourceBean.get(parameters);
-			}
-		};
-		Object resource = resources.apply(visitor, new VisitContext(request));
+		Object resource = resources.resolve(new VisitContext(request));
 		// if no bean that matches request found, throw exception ( or return default 404 object ? )
 		return resource;
 	}

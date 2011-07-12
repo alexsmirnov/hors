@@ -14,6 +14,6 @@ public interface ResourceDescription {
 	 * @param parameters
 	 * @return
 	 */
-	Object apply(ResourceDescriptionVisitor visitor, VisitContext parameters);	
+	Object resolve(VisitContext parameters);	
 
 }

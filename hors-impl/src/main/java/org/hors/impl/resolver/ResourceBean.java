@@ -11,7 +11,7 @@ import javax.enterprise.inject.spi.BeanManager;
  * @author asmirnov
  *
  */
-public class ResourceBean<X> implements ResourceProducer {
+public class ResourceBean<X> implements ResourceDescription {
 
 	private final Bean<X> bean;
 	private final BeanManager manager;
@@ -25,14 +25,10 @@ public class ResourceBean<X> implements ResourceProducer {
 	 * @see org.hors.impl.resolver.ResourceDescription#apply(org.hors.impl.resolver.ResourceDescriptionVisitor)
 	 */
 	@Override
-	public Object apply(ResourceDescriptionVisitor visitor, VisitContext parameters) {
-		return visitor.visit(this, parameters);
-	}
-
-	@Override
-	public X get(VisitContext context) {
+	public Object resolve(VisitContext parameters) {
 		CreationalContext<X> creationalContext = manager.createCreationalContext(bean);
 		return bean.create(creationalContext);
 	}
+
 
 }

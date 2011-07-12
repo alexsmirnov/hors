@@ -28,7 +28,7 @@ public class ExtensionTest {
 		return ShrinkWrap.create(JavaArchive.class,"test.jar")
 		   .addPackages(true, ResourceResolver.class.getPackage())
 		   .addPackages(true, ControllerBeanExtension.class.getPackage())
-		   .addClasses(TestBean.class,PathResolver.class)
+		   .addClasses(TestBean.class /*,PathResolver.class*/)
 		   .addAsManifestResource("META-INF/beans.xml","beans.xml")
 		   .addAsServiceProvider(Extension.class,ControllerBeanExtension.class)
 		   ;
@@ -39,4 +39,8 @@ public class ExtensionTest {
 		assertNotNull(resources);
 	}
 
+	@Test
+	public void testBeanResourceResolution() throws Exception {
+		
+	}
 }

@@ -24,9 +24,6 @@ public class ResourcesTest {
 
 	
 	private static final String METHOD = "METHOD";
-
-	@Mock
-	ResourceDescriptionVisitor visitor;
 	
 	@Mock
 	WebRequest request;
@@ -41,7 +38,7 @@ public class ResourcesTest {
 	public void testMethodResource(){
 		Resources resources = createResources();
 		VisitContext params = new VisitContext("foo/baz/method",request);
-		Object apply = resources.apply(visitor, params);
+		Object apply = resources.resolve(params);
 		assertEquals(METHOD, apply);
 	}
 
@@ -49,7 +46,7 @@ public class ResourcesTest {
 	public void testBeanResource(){
 		Resources resources = createResources();
 		VisitContext params = new VisitContext("foo/bar",request);
-		Object apply = resources.apply(visitor, params);
+		Object apply = resources.resolve(params);
 		assertEquals(BEAN, apply);
 	}
 
@@ -57,13 +54,13 @@ public class ResourcesTest {
 	public void testMissedResource(){
 		Resources resources = createResources();
 		VisitContext params = new VisitContext("bar/baz",request);
-		Object apply = resources.apply(visitor, params);
+		Object apply = resources.resolve(params);
 		assertNull(apply);
 	}
 
 	private Resources createResources() {
-		when(beanDescription.apply(same(visitor), Matchers.<VisitContext>any())).thenReturn(BEAN);
-		when(methodDescription.apply(same(visitor), Matchers.<VisitContext>any())).thenReturn(METHOD);
+		when(beanDescription.resolve( Matchers.<VisitContext>any())).thenReturn(BEAN);
+		when(methodDescription.resolve(Matchers.<VisitContext>any())).thenReturn(METHOD);
 		Resources resources = builder()
 			.put(pathPattern("foo/"), builder()
 					.put(pathPattern("baz/"),builder()

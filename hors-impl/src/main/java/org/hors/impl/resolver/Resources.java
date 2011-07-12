@@ -26,8 +26,8 @@ public class Resources implements ResourceDescription {
 	}
 	
 	@Override
-	public Object apply(ResourceDescriptionVisitor visitor, VisitContext visitContext) {
-		Object result = applyToMap(resources, visitor,visitContext);
+	public Object resolve(VisitContext visitContext) {
+		Object result = applyToMap(resources, visitContext);
 		return result;
 	}
 	
@@ -39,14 +39,14 @@ public class Resources implements ResourceDescription {
 	 * @param visitContext current visit parameters.
 	 * @return resource object for matching request, or null if none matched. 
 	 */
-	protected Object applyToMap(Map<RequestPattern,? extends ResourceDescription> map,ResourceDescriptionVisitor visitor, VisitContext visitContext){
+	protected Object applyToMap(Map<RequestPattern,? extends ResourceDescription> map, VisitContext visitContext){
 		Iterator<RequestPattern> iterator = map.keySet().iterator();
 		Object result = null;
 		while(iterator.hasNext() && null == result) {
 			RequestPattern pattern = iterator.next();
 			RequestMatcher matcher = pattern.matcher(visitContext.getPath(), visitContext.getRequest());
 			if(matcher.matches()){				
-				result = map.get(pattern).apply(visitor, visitContext.nextLevelParameters(matcher));
+				result = map.get(pattern).resolve(visitContext.nextLevelParameters(matcher));
 			}
 		}
 		return result;

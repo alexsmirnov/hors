@@ -3,7 +3,6 @@ package org.hors.impl.resolver;
 import static junit.framework.Assert.assertNotNull;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.Matchers.same;
 import static org.mockito.Mockito.when;
 
 import java.util.Set;
@@ -26,34 +25,38 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Matchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.mockito.runners.MockitoJUnitRunner;
 
 import com.google.common.collect.Iterables;
 
 
-@RunWith(MockitoJUnitRunner.class)
-public class PathResolverTest {
+@RunWith(Arquillian.class)
+public class BeanResolverTest {
 
-
-	@Mock
-	ResourceProducer resource;
 	
-	@Mock
-	WebRequest request;
+	@Inject
+	BeanResourceResolver resolver;
+	
+	@Deployment
+	public static JavaArchive deployment(){
+		return ShrinkWrap.create(JavaArchive.class,"test.jar")
+		   .addPackages(true, ResourceResolver.class.getPackage())
+		   .addPackages(true, BeanResourceResolver.class.getPackage())
+		   .addAsManifestResource("META-INF/beans.xml","beans.xml")
+		   .addAsServiceProvider(Extension.class,ControllerBeanExtension.class)
+		   ;
+	}
 	
 	
 	@Test
 	public void testResolvePath() throws Exception {
+		WebRequest request = Mockito.mock(WebRequest.class);
 		when(request.getPath()).thenReturn(TestBean.FOO_BAR);
-		when(resource.apply(Matchers.<ResourceDescriptionVisitor>any(), Matchers.<VisitContext>any())).thenReturn(new TestBean("TestBean"));
-		BeanResourceResolver resolver = new BeanResourceResolver(resource);
 		Object resolved = resolver.resolve(request);
 		assertNotNull(resolved);
 		assertTrue(resolved instanceof TestBean);
-		assertEquals("TestBean", ((TestBean)resolved).getName());
+		Mockito.validateMockitoUsage();
 	}
 }

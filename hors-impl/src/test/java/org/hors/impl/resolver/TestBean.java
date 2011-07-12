@@ -1,8 +1,10 @@
 package org.hors.impl.resolver;
 
 import org.hors.resolver.RequestPath;
+import org.hors.resolver.Resource;
 
 @RequestPath(TestBean.FOO_BAR)
+@Resource
 public class TestBean {
 
 	static final String FOO_BAR = "foo/bar";
