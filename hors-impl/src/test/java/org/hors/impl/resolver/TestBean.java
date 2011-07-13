@@ -7,7 +7,7 @@ import org.hors.resolver.Resource;
 @Resource
 public class TestBean {
 
-	static final String FOO_BAR = "foo/bar";
+	public static final String FOO_BAR = "foo/bar";
 	
 	private String name;
 
