@@ -6,6 +6,7 @@
     <artifactId>parent</artifactId>
     <groupId>org.hors</groupId>
     <version>0.0.1-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
   </parent>
   <artifactId>hors-impl</artifactId>
   <name>hors-impl</name>
@@ -13,22 +14,8 @@
   <properties>
     <scala.version>2.9.0-1</scala.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	<arquillian.version>1.0.0.CR1</arquillian.version>
   </properties>
-  	<repositories>
-		<repository>
-			<id>scala-tools.org</id>
-			<name>Scala-Tools Maven2 Repository</name>
-			<url>http://scala-tools.org/repo-releases</url>
-		</repository>
-	</repositories>
-
-	<pluginRepositories>
-		<pluginRepository>
-			<id>scala-tools.org</id>
-			<name>Scala-Tools Maven2 Repository</name>
-			<url>http://scala-tools.org/repo-releases</url>
-		</pluginRepository>
-	</pluginRepositories>
   
   <dependencies>
 		<!-- hors -->
@@ -45,9 +32,6 @@
 		</dependency>
 		<!-- JEE API's, use separate files to be able run tests, because javaee-web-api 
 			intended to compilation only, all functionality stripped -->
-		<!-- <dependency> <groupId>javax</groupId> <artifactId>javaee-web-api</artifactId> 
-			</dependency> -->
-
 		<dependency>
 			<groupId>javax.enterprise</groupId>
 			<artifactId>cdi-api</artifactId>
@@ -56,13 +40,11 @@
 		<dependency>
 			<groupId>org.jboss.spec.javax.servlet.jsp</groupId>
 			<artifactId>jboss-jsp-api_2.2_spec</artifactId>
-			<version>1.0.0.Final</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.resteasy</groupId>
 			<artifactId>jaxrs-api</artifactId>
-			<version>1.0-beta-5</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -78,7 +60,6 @@
 		<dependency>
 			<groupId>org.jboss.ejb3</groupId>
 			<artifactId>jboss-ejb3-api</artifactId>
-			<version>3.1.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<!-- tests -->
@@ -96,47 +77,36 @@
 		<dependency>
 			<groupId>org.scala-lang</groupId>
 			<artifactId>scala-library</artifactId>
-			<version>${scala.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.specs2</groupId>
 			<artifactId>specs2_2.9.0-1</artifactId>
-			<version>1.4</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.specs2</groupId>
 			<artifactId>specs2-scalaz-core_2.9.0-1</artifactId>
-			<version>6.0.RC2</version>
+			<scope>test</scope>
 		</dependency>
 
 		<!-- with Scala 2.8.1, change to: <artifactId>specs2-scalaz-core_2.8.1</artifactId> 
 			<version>5.1-SNAPSHOT</version> -->
-		<dependency>
-			<groupId>org.specs2</groupId>
-			<artifactId>specs2-scalaz-core_2.9.0-1</artifactId>
-			<version>6.0.RC2</version>
-			<scope>test</scope>
-		</dependency>
 
 		<!-- Arquillian -->
 		<dependency>
-			<groupId>org.jboss.arquillian</groupId>
-			<artifactId>arquillian-junit</artifactId>
-			<version>1.0.0.Alpha5</version>
+			<groupId>org.jboss.arquillian.junit</groupId>
+			<artifactId>arquillian-junit-container</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.arquillian.container</groupId>
 			<artifactId>arquillian-weld-ee-embedded-1.1</artifactId>
-			<version>1.0.0.Alpha5</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
-			<version>4.1.0.Final</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -152,7 +122,6 @@
 		<dependency>
 			<groupId>org.glassfish.web</groupId>
 			<artifactId>el-impl</artifactId>
-			<version>2.1.2-b04</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -177,12 +146,6 @@
 						</goals>
 					</execution>
 				</executions>
-				<configuration>
-					<scalaVersion>${scala.version}</scalaVersion>
-					<args>
-						<arg>-target:jvm-1.5</arg>
-					</args>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>

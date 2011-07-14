@@ -8,7 +8,10 @@
 	<packaging>pom</packaging>
 	<properties>
 		<endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
+		<scala.version>2.9.0-1</scala.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<arquillian.version>1.0.0.CR1</arquillian.version>
+		<jbossas.version>7.0.0.Final</jbossas.version>
 	</properties>
 	<name>Hors web framework</name>
 	<description>Prototype for next generation JEE web framework</description>
@@ -47,6 +50,17 @@
 					<artifactId>maven-dependency-plugin</artifactId>
 					<version>2.1</version>
 				</plugin>
+				<plugin>
+					<groupId>org.scala-tools</groupId>
+					<artifactId>maven-scala-plugin</artifactId>
+					<version>2.15.2</version>
+					<configuration>
+						<scalaVersion>${scala.version}</scalaVersion>
+						<args>
+							<arg>-target:jvm-1.5</arg>
+						</args>
+					</configuration>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
@@ -67,14 +81,36 @@
 				<artifactId>tck</artifactId>
 				<version>0.0.1-SNAPSHOT</version>
 			</dependency>
-
+			<!-- JEE -->
 			<dependency>
 				<groupId>javax</groupId>
 				<artifactId>javaee-web-api</artifactId>
 				<version>6.0</version>
 				<scope>provided</scope>
 			</dependency>
+			<!-- JEE API's, use separate files to be able run tests, because javaee-web-api 
+				intended to compilation only, all functionality stripped -->
 
+			<dependency>
+				<groupId>org.jboss.spec.javax.servlet.jsp</groupId>
+				<artifactId>jboss-jsp-api_2.2_spec</artifactId>
+				<version>1.0.0.Final</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.resteasy</groupId>
+				<artifactId>jaxrs-api</artifactId>
+				<version>1.0-beta-5</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.jboss.ejb3</groupId>
+				<artifactId>jboss-ejb3-api</artifactId>
+				<version>3.1.0</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<!-- Tests -->
 			<dependency>
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
@@ -87,12 +123,66 @@
 				<version>1.8.5</version>
 				<scope>test</scope>
 			</dependency>
+			<!-- Scala -->
+			<dependency>
+				<groupId>org.scala-lang</groupId>
+				<artifactId>scala-library</artifactId>
+				<version>${scala.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.specs2</groupId>
+				<artifactId>specs2_2.9.0-1</artifactId>
+				<version>1.4</version>
+			</dependency>
+			<dependency>
+				<groupId>org.specs2</groupId>
+				<artifactId>specs2-scalaz-core_2.9.0-1</artifactId>
+				<version>6.0.RC2</version>
+			</dependency>
+
+			<!-- Jboss -->
 			<dependency>
 				<groupId>org.jboss.weld</groupId>
 				<artifactId>weld-core-bom</artifactId>
 				<version>1.1.0.Final</version>
 				<type>pom</type>
 				<scope>import</scope>
+			</dependency>
+			<!-- Arquillian -->
+			<dependency>
+				<groupId>org.jboss.arquillian.junit</groupId>
+				<artifactId>arquillian-junit-container</artifactId>
+				<version>${arquillian.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jboss.arquillian.container</groupId>
+				<artifactId>arquillian-weld-ee-embedded-1.1</artifactId>
+				<version>${arquillian.version}</version>
+			</dependency>
+			<dependency>
+			    <groupId>org.jboss.as</groupId>
+			    <artifactId>jboss-as-arquillian-container-embedded</artifactId>
+			    <version>7.0.0.Beta3</version>
+			</dependency>
+			<dependency>
+			    <groupId>org.jboss.as</groupId>
+			    <artifactId>jboss-as-arquillian-container-managed</artifactId>
+			    <version>${jbossas.version}</version>
+			</dependency>
+			<dependency>
+			    <groupId>org.jboss.as</groupId>
+			    <artifactId>jboss-as-embedded</artifactId>
+			    <version>${jbossas.version}</version>
+			</dependency>			
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-validator</artifactId>
+				<version>4.1.0.Final</version>
+			</dependency>
+			<dependency>
+				<groupId>org.glassfish.web</groupId>
+				<artifactId>el-impl</artifactId>
+				<version>2.1.2-b04</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

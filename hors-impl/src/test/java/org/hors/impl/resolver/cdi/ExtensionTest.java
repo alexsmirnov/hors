@@ -1,18 +1,17 @@
 package org.hors.impl.resolver.cdi;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import javax.enterprise.inject.spi.Extension;
 import javax.inject.Inject;
 
-import org.hors.impl.resolver.BeanResourceResolver;
-import org.hors.impl.resolver.PathResolver;
 import org.hors.impl.resolver.ResourceDescription;
 import org.hors.impl.resolver.TestBean;
 import org.hors.impl.resolver.VisitContext;
 import org.hors.resolver.ResourceResolver;
 import org.hors.servlet.WebRequest;
-import org.jboss.arquillian.api.Deployment;
+import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
